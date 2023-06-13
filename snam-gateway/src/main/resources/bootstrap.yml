@@ -1,0 +1,137 @@
+server:
+  port: ${server.port}
+  context-path: ${server.contextPath}
+  shutdown: graceful
+  undertow: # jetty  undertow
+    threads:
+      io: 8 # 设置IO线程数, 它主要执行非阻塞的任务,它们会负责多个连接, 默认设置每个CPU核心一个线程
+      worker: 120  # 阻塞任务线程池, 当执行类似servlet请求阻塞操作, undertow会从这个线程池中取得线程,它的值设置取决于系统的负载
+    buffer-size: 2048  # 以下的配置会影响buffer,这些buffer会用于服务器连接的IO操作,有点类似netty的池化内存管理 , 每块buffer的空间大小,越小的空间被利用越充分
+    direct-buffers: true  # 是否分配的直接内存
+logging:
+  #config: classpath:logback-spring.xml
+  level:
+    console: ${logLevel.console}
+spring:
+#  config:
+#    import: "optional:configserver:"
+  main:
+    allow-bean-definition-overriding: true
+    allow-circular-references: true
+  profiles:
+    active: ${server.env}
+  application:
+    name: snapper-gateway
+    lifecycle:
+      timeout-per-shutdown-phase: 10s
+  sleuth:
+    enabled: true
+    sampler:
+      probability: 1.0
+  cloud:
+    config:
+      import-check:
+        enabled: false
+    nacos:
+      discovery:
+        enabled: ${nacos.discovery.enabled}
+        server-addr: ${discovery.address}
+    gateway:
+      filter:
+        remove-non-proxy-headers:
+          headers:
+          - Proxy-Authenticate
+          - Proxy-Authorization
+          - Keep-Alive
+          - TE
+          - Trailer
+          - Transfer-Encoding
+      default-filters:
+        - name: Retry
+          args:
+            retries: 2
+            methods: GET,POST,DELETE,PUT
+        - DedupeResponseHeader=Access-Control-Allow-Origin
+      httpclient:
+        connect-timeout: 500 # faster retry
+      globalcors:
+        add-to-simple-url-handler-mapping: true
+        corsConfigurations:
+          '[/**]':
+            allowed-origin-patterns: "*"
+            allowed-methods: "*"
+            allowed-headers: "*"
+            allow-credentials: true
+      discovery:
+         locator:
+           lowerCaseServiceId: true
+           enabled: true
+      routes:
+        # =====================================
+        - id: snam-auth-hmac
+          uri: ${route.authority}
+          predicates:
+          - Path=/authority/wapi/**
+          filters:
+          - RewritePath=/authority/(wapi/)?(?<path>.*), /wapi/$\{path}
+        # for feign
+        - id: snam-auth-feign
+          uri: ${route.authority}
+          predicates:
+          - Path=/feign/authority/**
+          filters:
+          - RewritePath=/feign/authority/(api/)?(?<path>.*), /fapi/$\{path}
+        - id: snam-auth
+          uri: ${route.authority}
+          predicates:
+          - Path=/authority/**
+          filters:
+          - RewritePath=/authority/(api/)?(?<path>.*), /api/$\{path}
+        - id: snam-business-hmac
+          uri: ${route.order}
+          predicates:
+          - Path=/business/wapi/**
+          filters:
+          - RewritePath=/business/(wapi/)?(?<path>.*), /wapi/$\{path}
+        #for order
+        - id: snam-business
+          uri: ${route.order}
+          predicates:
+          - Path=/business/**
+          filters:
+          - RewritePath=/business/(api/)?(?<path>.*), /api/$\{path}
+
+  redis:
+    #single mode
+    host: ${redis.host}
+    port: ${redis.port}
+    password: ${redis.password}
+    timeout: 18000
+    lettuce:
+      pool:
+        min-idle: 5
+        max-idle: 50
+        max-active: 100
+        max-wait: 1000
+
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+feign:
+  httpclient:
+    enabled: false
+  okhttp:
+    enabled: true
+  compression:
+    request:
+      enabled: true
+      mime-types: text/xml,application/xml,application/json
+      min-request-size: 2048
+    response:
+      enabled: true
+
+snapper:
+  ulog: true #是否开启用户日志

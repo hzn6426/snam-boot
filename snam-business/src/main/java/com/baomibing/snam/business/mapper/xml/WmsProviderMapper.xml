@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.baomibing.snam.business.mapper.WmsProviderMapper">
+
+
+	<select id="listByKeyWord" resultType="com.baomibing.snam.business.entity.WmsProvider">
+		SELECT id,simple_name
+		FROM wms_provider
+		<where>
+			<if test="keyWord != null and  keyWord != ''">
+				AND (code LIKE CONCAT('%',#{keyWord},'%')
+				OR name LIKE CONCAT('%',#{keyWord},'%')
+				OR simple_name LIKE CONCAT('%',#{keyWord},'%'))
+			</if>
+		</where>
+		LIMIT 5
+	</select>
+
+</mapper>

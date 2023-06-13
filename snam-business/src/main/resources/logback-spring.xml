@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true" scanPeriod="300 seconds">
+
+    <include resource="com/baomibing/log/logback-base.xml"/>
+
+    <springProfile name="test,docker,pub">
+
+        <logger name="com.baomibing" level="INFO" addtivity="true">
+            <appender-ref ref="ASYNC_ROOT_APPENDER"/>
+        </logger>
+
+        <logger name="com.baomibing.tool" level="INFO" addtivity="false">
+            <appender-ref ref="ASYNC_POINT_APPENDER"/>
+        </logger>
+
+        <root level="${logging.level.console}">
+            <appender-ref ref="CONSOLE_APPENDER"/>
+        </root>
+    </springProfile>
+
+    <springProfile name="dev">
+<!--        <logger name="com.baomibing.authority" level="ERROR" addtivity="false">-->
+<!--            <appender-ref ref="ASYNC_EXCEPTION_APPENDER"/>-->
+<!--        </logger>-->
+
+        <logger name="com.baomibing.tool.log" level="INFO" addtivity="false">
+            <appender-ref ref="ASYNC_POINT_APPENDER"/>
+        </logger>
+
+        <logger name="com.baomibing" level="INFO" addtivity="true">
+            <appender-ref ref="ASYNC_ROOT_APPENDER"/>
+        </logger>
+
+        <root level="${logging.level.console}">
+            <appender-ref ref="CONSOLE_APPENDER"/>
+<!--            <appender-ref ref="ASYNC_ROOT_APPENDER"/>-->
+        </root>
+
+    </springProfile>
+
+</configuration>

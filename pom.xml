@@ -1,0 +1,303 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.baomibing</groupId>
+    <artifactId>snam-boot</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <properties>
+
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <java.version>1.8</java.version>
+        <maven-assembly-plugin.version>3.3.0</maven-assembly-plugin.version>
+        <maven-dependency-plugin.version>3.1.2
+        </maven-dependency-plugin.version>
+        <maven-jar-plugin.version>3.2.0</maven-jar-plugin.version>
+        <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
+        <maven-surefire-plugin.version>3.0.0-M5</maven-surefire-plugin.version>
+        <maven-resources-plugin.version>3.2.0</maven-resources-plugin.version>
+        <maven-javadoc-plugin.version>3.2.0</maven-javadoc-plugin.version>
+        <maven-source-plugin.version>3.2.1</maven-source-plugin.version>
+        <maven-clean-plugin.version>3.1.0</maven-clean-plugin.version>
+        <maven-install-plugin.version>3.0.0-M1</maven-install-plugin.version>
+        <maven-release-plugin.version>3.0.0-M1</maven-release-plugin.version>
+        <maven-deploy-plugin.version>3.0.0-M1</maven-deploy-plugin.version>
+        <maven-war-plugin.version>3.3.1</maven-war-plugin.version>
+        <maven-release-plugin.version>3.0.0-M1</maven-release-plugin.version>
+        <maven.staging.plugin>1.6.7</maven.staging.plugin>
+        <maven.gpg.pluign>1.5</maven.gpg.pluign>
+
+
+        <snapper-cloud.version>0.0.3-SNAPSHOT</snapper-cloud.version>
+        <spring.boot.version>2.6.14</spring.boot.version>
+        <spring.cloud.version>2021.0.4</spring.cloud.version>
+    </properties>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-maven-plugin</artifactId>
+                    <version>${spring.boot.version}</version>
+                    <configuration>
+                        <finalName>${project.build.finalName}</finalName>
+                    </configuration>
+                    <executions>
+                        <execution>
+                            <goals>
+                                <goal>repackage</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-source-plugin</artifactId>
+                    <version>${maven-source-plugin.version}</version>
+                    <executions>
+                        <execution>
+                            <id>attach-sources</id>
+                            <goals>
+                                <goal>jar-no-fork</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-resources-plugin</artifactId>
+                    <version>${maven-resources-plugin.version}</version>
+                    <configuration>
+                        <useDefaultDelimiters>true</useDefaultDelimiters>
+                        <encoding>UTF-8</encoding>
+                    </configuration>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>${maven-compiler-plugin.version}</version>
+                    <configuration>
+                        <source>${java.version}</source>
+                        <target>${java.version}</target>
+                        <encoding>UTF-8</encoding>
+                        <compilerArgs>
+                            <arg>-parameters</arg>
+                        </compilerArgs>
+                    </configuration>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-dependency-plugin</artifactId>
+                    <version>${maven-dependency-plugin.version}</version>
+                    <executions>
+                        <execution>
+                            <phase>package</phase>
+                            <goals>
+                                <goal>copy-dependencies</goal>
+                            </goals>
+                            <configuration>
+                                <outputDirectory>${project.build.directory}/lib</outputDirectory>
+                            </configuration>
+                        </execution>
+                    </executions>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-deploy-plugin</artifactId>
+                    <version>${maven-deploy-plugin.version}</version>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-release-plugin</artifactId>
+                    <version>${maven-release-plugin.version}</version>
+                    <configuration>
+                        <!-- <tagBase>https://github.com/hzn6426/search-mybatis-plus</tagBase>
+                            <tagNameFormat>search-mybatis-plus-tag-${version}</tagNameFormat> -->
+                        <autoVersionSubmodules>true</autoVersionSubmodules>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+
+    <dependencyManagement>
+        <dependencies>
+
+            <dependency>
+                <groupId>com.baomibing</groupId>
+                <artifactId>snapper-tool</artifactId>
+                <version>${snapper-cloud.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.baomibing</groupId>
+                <artifactId>snapper-email</artifactId>
+                <version>${snapper-cloud.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.baomibing</groupId>
+                <artifactId>snapper-core-starter</artifactId>
+                <version>${snapper-cloud.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.baomibing</groupId>
+                <artifactId>snapper-orm-starter</artifactId>
+                <version>${snapper-cloud.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.baomibing</groupId>
+                <artifactId>snapper-web-starter</artifactId>
+                <version>${snapper-cloud.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.baomibing</groupId>
+                <artifactId>snapper-cache-starter</artifactId>
+                <version>${snapper-cloud.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.baomibing</groupId>
+                <artifactId>snapper-log-starter</artifactId>
+                <version>${snapper-cloud.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.baomibing</groupId>
+                <artifactId>snapper-feign-starter</artifactId>
+                <version>${snapper-cloud.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.baomibing</groupId>
+                <artifactId>snapper-oss-starter</artifactId>
+                <version>${snapper-cloud.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.baomibing</groupId>
+                <artifactId>snapper-authority-starter</artifactId>
+                <version>${snapper-cloud.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.baomibing</groupId>
+                <artifactId>snam-authority-api</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.baomibing</groupId>
+                <artifactId>snapper-gateway-starter</artifactId>
+                <version>${snapper-cloud.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.baomibing</groupId>
+                <artifactId>snapper-http</artifactId>
+                <version>${snapper-cloud.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring.boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring.cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+        </dependencies>
+    </dependencyManagement>
+
+    <repositories>
+        <repository>
+            <id>maven-proxy</id>
+            <name>maven-proxy</name>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+            <url>https://s01.oss.sonatype.org/content/groups/public/</url>
+        </repository>
+        <repository>
+            <id>spring-milestones</id>
+            <name>Spring Milestones</name>
+            <url>https://repo.spring.io/libs-milestone</url>
+        </repository>
+    </repositories>
+    <pluginRepositories>
+        <pluginRepository>
+            <id>maven-proxy</id>
+            <url>http://maven.aliyun.com/nexus/content/groups/public</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </pluginRepository>
+    </pluginRepositories>
+
+
+    <profiles>
+        <!-- 本地环境 -->
+        <profile>
+            <id>local</id>
+            <properties>
+                <env>local</env>
+            </properties>
+        </profile>
+
+        <!-- 开发环境 -->
+        <profile>
+            <id>dev</id>
+            <properties>
+                <env>dev</env>
+            </properties>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+        </profile>
+
+        <!-- 测试环境 -->
+        <profile>
+            <id>test</id>
+            <properties>
+                <env>test</env>
+            </properties>
+        </profile>
+
+        <!-- 正式环境 -->
+        <profile>
+            <id>pub</id>
+            <properties>
+                <env>pub</env>
+            </properties>
+        </profile>
+    </profiles>
+
+    <modules>
+        <module>snam-authority</module>
+        <module>snam-gateway</module>
+        <module>snam-authority-api</module>
+        <module>snam-business</module>
+    </modules>
+</project>

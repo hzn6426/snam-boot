@@ -1,0 +1,178 @@
+server:
+  port: ${server.port}
+  context-path: ${server.contextPath}
+  error:
+    whitelabel:
+      enabled: false
+  shutdown: graceful
+  undertow: # jetty  undertow
+    buffer-size: 2048  # 以下的配置会影响buffer,这些buffer会用于服务器连接的IO操作,有点类似netty的池化内存管理 , 每块buffer的空间大小,越小的空间被利用越充分
+    direct-buffers: true  # 是否分配的直接内存
+    threads:
+      io: 8 #设置IO线程数, 它主要执行非阻塞的任务,它们会负责多个连接, 默认设置每个CPU核心一个线程
+      worker: 120 # 阻塞任务线程池, 当执行类似servlet请求阻塞操作, undertow会从这个线程池中取得线程,它的值设置取决于系统的负载
+spring:
+  main:
+    allow-bean-definition-overriding: true
+    allow-circular-references: true
+  mvc:
+    enabled: true
+    throw-exception-if-no-handler-found: true
+  resources:
+    add-mappings: false
+  profiles:
+    active: ${server.env}
+#  rabbitmq:
+#    host: 192.168.1.252
+#    port: 5672
+#  zipkin:
+#    base-url: http://192.168.1.252:9411
+  application:
+    name: snapper-authority
+    lifecycle:
+      timeout-per-shutdown-phase: 10s
+  sleuth:
+    enabled: true
+    sampler:
+      probability: 1.0
+  cloud:
+    config:
+      import-check:
+        enabled: false
+    nacos:
+      discovery:
+        enabled: ${nacos.discovery.enabled}
+        server-addr: ${discovery.address}
+    gateway:
+       discovery:
+         locator:
+           lower-case-service-id: true
+           enabled: true
+  redis:
+    #single mode
+    host: ${redis.host}
+    port: ${redis.port}
+    password: ${redis.password}
+    timeout: 18000
+    lettuce:
+      pool:
+        min-idle: 5
+        max-idle: 50
+        max-active: 100
+        max-wait: 1000
+  datasource:
+    druid:
+      enable: true
+      username: ${jdbc.username}
+      password: ${jdbc.password}
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: ${jdbc.url}
+      db-type: mysql
+      initialSize: 50
+      minIdle: 50
+      maxActive: 200
+      max-wait: 60000
+      pool-prepared-statements: true
+      max-pool-prepared-statement-per-connection-size: 50
+      validation-query: SELECT 'x'
+      test-on-borrow: false
+      test-on-return: false
+      test-while-idle: true
+      time-between-eviction-runs-millis: 60000  #配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
+      min-evictable-idle-time-millis: 300000    #配置一个连接在池中最小生存的时间，单位是毫秒
+      filters: stat,wall,slf4j
+      filter:
+        slf4j:
+          statement-create-after-log-enabled: false
+          statement-log-enabled: false
+          statement-executable-sql-log-enable: false
+          statement-log-error-enabled: false
+          result-set-log-enabled: false
+          statement-sql-pretty-format: false
+        wall:
+          enabled: true
+          config:
+            commentAllow: true
+            multiStatementAllow: true
+            noneBaseStatementAllow: true
+
+      # 以下的2段配置，同时适用于所有模式
+      web-stat-filter:  # WebStatFilter配置，说明请参考Druid Wiki，配置_配置WebStatFilter
+        enabled: false
+        url-pattern: /*
+        exclusions: "*.js , *.gif ,*.jpg ,*.png ,*.css ,*.ico , /druid/*"
+        session-stat-max-count: 1000
+        profile-enable: true
+        session-stat-enable: false
+      stat-view-servlet:  #展示Druid的统计信息,StatViewServlet的用途包括：1.提供监控信息展示的html页面2.提供监控信息的JSON API
+        enabled: false
+        url-pattern: /druid/*   #根据配置中的url-pattern来访问内置监控页面，如果是上面的配置，内置监控页面的首页是/druid/index.html例如：http://127.0.0.1:9000/druid/index.html
+        reset-enable: true    #允许清空统计数据
+        login-username: ${durid.login-username}
+        login-password: ${durid.login-password}
+  servlet:
+    multipart:
+      max-file-size: 10MB
+jasypt:
+  encryptor:
+    bean: customerStringEncryptor
+    property:
+      prefix: "BENC("
+      suffix: ")"
+#  config: classpath:logback-spring.xml
+#debug: false
+logging:
+  level:
+    console: ${snapper.log.level}
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+feign:
+  client:
+    url: ${server.gateway}
+    refresh-enabled:
+  httpclient:
+    enabled: false
+  okhttp:
+    enabled: true
+  compression:
+    request:
+      enabled: true
+      mime-types: text/xml,application/xml,application/json
+      min-request-size: 2048
+    response:
+      enabled: true
+
+mybatis-plus:
+  mapper-locations:
+    - classpath:com/baomibing/authority/mapper/xml/*Mapper.xml
+  #实体扫描，多个package用逗号或者分号分隔
+  typeAliasesPackage: com.baomibing.authority.entity;
+  global-config:
+    enable-sql-runner: true
+    db-config:
+      id-type: ASSIGN_ID
+      insert-strategy: NOT_NULL
+      update-strategy: NOT_NULL
+  configuration:
+    log-impl: ${snapper.log.impl}
+    #配置返回数据库(column下划线命名&&返回java实体是驼峰命名)，自动匹配无需as（没开启这个，SQL需要写as： select user_id as userId
+    map-underscore-to-camel-case: true
+    cache-enabled: true
+    #配置JdbcTypeForNull, oracle数据库必须配置
+    jdbc-type-for-null: 'null'
+snapper:
+  ulog: false
+  schema: ${jdbc.schema}
+
+fdfs:
+  connectTimeout: ${fdfs.connectTimeout}
+  networkTimeout: ${fdfs.networkTimeout}
+  charset: ${fdfs.charset}
+  trackerHttpPort: ${fdfs.trackerHttpPort}
+  antiStealToken: ${fdfs.antiStealToken}
+  secretKey: ${fdfs.secretKey}
+  trackerServers: ${fdfs.trackerServers}
+  readServer: ${fdfs.readServer}
