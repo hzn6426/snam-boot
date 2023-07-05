@@ -11,7 +11,7 @@ server:
 logging:
   #config: classpath:logback-spring.xml
   level:
-    console: ${logLevel.console}
+    console: ${snapper.log.level}
 spring:
 #  config:
 #    import: "optional:configserver:"
@@ -88,14 +88,14 @@ spring:
           filters:
           - RewritePath=/authority/(api/)?(?<path>.*), /api/$\{path}
         - id: snam-business-hmac
-          uri: ${route.order}
+          uri: ${route.business}
           predicates:
           - Path=/business/wapi/**
           filters:
           - RewritePath=/business/(wapi/)?(?<path>.*), /wapi/$\{path}
         #for order
         - id: snam-business
-          uri: ${route.order}
+          uri: ${route.business}
           predicates:
           - Path=/business/**
           filters:
@@ -115,23 +115,23 @@ spring:
         max-wait: 1000
 
 
-management:
-  endpoints:
-    web:
-      exposure:
-        include: '*'
-feign:
-  httpclient:
-    enabled: false
-  okhttp:
-    enabled: true
-  compression:
-    request:
-      enabled: true
-      mime-types: text/xml,application/xml,application/json
-      min-request-size: 2048
-    response:
-      enabled: true
-
-snapper:
-  ulog: true #是否开启用户日志
+#management:
+#  endpoints:
+#    web:
+#      exposure:
+#        include: '*'
+#feign:
+#  httpclient:
+#    enabled: false
+#  okhttp:
+#    enabled: true
+#  compression:
+#    request:
+#      enabled: true
+#      mime-types: text/xml,application/xml,application/json
+#      min-request-size: 2048
+#    response:
+#      enabled: true
+#
+#snapper:
+#  ulog: true #是否开启用户日志

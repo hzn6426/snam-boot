@@ -84,10 +84,10 @@
             <artifactId>snapper-feign-starter</artifactId>
         </dependency>
 
-        <dependency>
-            <groupId>com.baomibing</groupId>
-            <artifactId>snapper-log-starter</artifactId>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>com.baomibing</groupId>-->
+<!--            <artifactId>snapper-log-starter</artifactId>-->
+<!--        </dependency>-->
 
         <dependency>
             <groupId>com.baomibing</groupId>

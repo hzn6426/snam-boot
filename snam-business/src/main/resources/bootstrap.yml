@@ -164,8 +164,9 @@ mybatis-plus:
     #配置JdbcTypeForNull, oracle数据库必须配置
     jdbc-type-for-null: 'null'
 snapper:
-  ulog: false
-  schema: ${jdbc.schema}
+  ulog: ${snapper.ulog}
+  action:
+    package: ${snapper.action.package}
 
 fdfs:
   connectTimeout: ${fdfs.connectTimeout}

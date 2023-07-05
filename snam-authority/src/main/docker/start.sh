@@ -19,6 +19,7 @@ else
 echo "There are no containers running....."
 fi;
 #cd /Users/frog/jenkins_test/book
+mkdir -p /usr/local/snapper/authority/logs
 cd /usr/local/snapper/authority || exit
 $dockerbin build -t snapper/authority:v"${md}" .
 # shellcheck disable=SC2126
@@ -29,6 +30,6 @@ then
 echo "remove exist name container..."
 $dockerbin ps --all|grep snam-authority"${md}"  | grep -v grep | awk '{print $1}' | xargs $dockerbin rm -f
 fi;
-$dockerbin run -di --restart=always --network=host --name snam-authority"${md}" -p 8091:8091 snapper/authority:v"${md}"
+$dockerbin run -di --restart=always --network=host -v /usr/local/snapper/authority/logs:/logs/snapper-authority --name snam-authority"${md}" -p 8091:8091 snapper/authority:v"${md}"
 # shellcheck disable=SC2086
 $dockerbin logs -f snam-authority${md} &> authority${md}.log &
