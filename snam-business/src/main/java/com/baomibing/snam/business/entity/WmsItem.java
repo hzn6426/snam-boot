@@ -44,11 +44,11 @@ public class WmsItem extends MBaseModel {
 
     private Date expireTime;
 
-    private String sellerCode;
-
-    private String seller;
-
     private String groupId;
 
     private String note;
+
+    private String keeper;
+
+    private String keeperCode;
 }

@@ -1,5 +1,6 @@
 package com.baomibing.snam.business.controller;
 
+import com.baomibing.snam.business.dto.WmsClassDto;
 import com.baomibing.snam.business.dto.WmsItemDto;
 import com.baomibing.snam.business.service.WmsItemService;
 import com.baomibing.tool.common.PageQuery;
@@ -49,5 +50,9 @@ public class WmsItemController extends MBaseController<WmsItemDto> {
         itemService.deleteItems(Sets.newHashSet(ids));
     }
 
+    @GetMapping("listByKeyWord")
+    public List<WmsItemDto> listByKeyWord(@RequestParam String keyWord) {
+        return itemService.listByKeyWord(keyWord);
+    }
 
 }

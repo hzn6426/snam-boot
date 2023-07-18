@@ -1,12 +1,12 @@
 package com.baomibing.snam.feign.authority.api;
 
 import com.baomibing.snam.feign.authority.dto.GroupWrapDto;
+import com.baomibing.snam.feign.authority.dto.UserGroupWrapDto;
 import org.springframework.cloud.openfeign.FeignClient;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Set;
 
 /**
  * 用户服务远程调用
@@ -24,5 +24,8 @@ public interface GroupApi {
     List<GroupWrapDto> listBranchCompanines();
     @GetMapping("getParentCompanyById")
     GroupWrapDto getParentCompanyById(@RequestParam String groupId);
+
+    @PostMapping("listUserGroupByUserNos")
+    public List<UserGroupWrapDto> listUserGroupByUserNos(@RequestBody Set<String> userNos);
 
 }

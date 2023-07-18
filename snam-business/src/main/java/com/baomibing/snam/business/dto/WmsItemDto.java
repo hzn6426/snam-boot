@@ -36,9 +36,9 @@ public class WmsItemDto {
 
     private Date expireTime;
 
-    private String sellerCode;
+    private String keeperCode;
 
-    private String seller;
+    private String keeper;
 
     private String groupId;
 

@@ -13,6 +13,7 @@
 				OR simple_name LIKE CONCAT('%',#{keyWord},'%'))
 			</if>
 		</where>
+		ORDER BY update_time desc
 		LIMIT 5
 	</select>
 

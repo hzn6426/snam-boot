@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.baomibing.snam.business.mapper.WmsItemMapper">
+
+
+	<select id="listByKeyWord" resultType="com.baomibing.snam.business.entity.WmsItem">
+		SELECT id,name
+		FROM wms_item
+		<where>
+			<if test="keyWord != null and  keyWord != ''">
+				AND name LIKE CONCAT('%',#{keyWord},'%')
+			</if>
+		</where>
+		LIMIT 5
+	</select>
+
+	<select id="getCountItemsByMonth" resultType="java.lang.Integer">
+		select count(1) + 1  from wms_item t where DATE_FORMAT(t.create_time, '%Y-%m') = #{date}
+	</select>
+
+</mapper>
