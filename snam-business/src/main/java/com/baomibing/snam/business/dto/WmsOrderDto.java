@@ -50,6 +50,8 @@ public class WmsOrderDto {
 
     private String unit;
 
+    private Date createTime;
+
 
     private Date start;
 

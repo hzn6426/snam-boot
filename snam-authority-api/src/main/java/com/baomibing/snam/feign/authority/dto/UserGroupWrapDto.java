@@ -14,6 +14,7 @@ import lombok.experimental.Accessors;
 public class UserGroupWrapDto {
 
     private  String id;
+    private String userNo;
     private String userId;
     private String groupId;
 }
