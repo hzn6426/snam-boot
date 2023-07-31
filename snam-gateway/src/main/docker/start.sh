@@ -1,7 +1,7 @@
 #dockerbin="/usr/local/bin/docker"
 dockerbin="/usr/bin/docker"
 echo "keep only latest two images, delete others..."
-docker images | grep snapper/gateway | grep -v grep | awk '{print $3}'| tail -n +3 | xargs $dockerbin rmi -f
+docker images | grep snam/gateway | grep -v grep | awk '{print $3}'| tail -n +3 | xargs $dockerbin rmi -f
 echo "keep only latest three containers, delete others..."
 docker ps --all|grep snam-gateway | grep -v grep | awk '{print $1}' | tail -n +4 | xargs $dockerbin rm -f
 #stop all restart policy
@@ -20,8 +20,8 @@ else
 echo "There are no containers running....."
 fi;
 #cd /Users/frog/jenkins_test/book
-cd /usr/local/snapper/gateway || exit
-$dockerbin build -t snapper/gateway:v"${md}" .
+cd /usr/local/snam/gateway || exit
+$dockerbin build -t snam/gateway:v"${md}" .
 # shellcheck disable=SC2126
 ccount=$(${dockerbin} ps --all | grep snam-gateway"${md}" | grep -v "grep" | wc -l)
 echo "There are ${ccount} count same name container are exist..."
@@ -30,5 +30,5 @@ then
 echo "remove exist name container..."
 $dockerbin ps --all|grep snam-gateway"${md}"  | grep -v grep | awk '{print $1}' | xargs $dockerbin rm -f
 fi;
-$dockerbin run -di --restart=always --network=host --name snam-gateway"${md}" -p 8090:8090 snapper/gateway:v"${md}"
+$dockerbin run -di --restart=always --network=host  -v /usr/local/snam/gateway/logs:/logs/snam-gateway --name snam-gateway"${md}" -p 8090:8090 snam/gateway:v"${md}"
 $dockerbin logs -f snam-gateway"${md}" &> gateway"${md}".log &

@@ -33,6 +33,7 @@
                     <include>*.properties</include>
                 </includes>
             </resource>
+
             <resource>
                 <targetPath>${project.build.directory}/classes</targetPath>
                 <directory>src/main/resources</directory>
@@ -41,6 +42,7 @@
                     <include>META-INF/services/**</include>
                 </includes>
             </resource>
+            
             <!-- mapp/xml中的mybatis xml 同样打到jar中 -->
             <resource>
                 <directory>src/main/java</directory>
@@ -49,6 +51,16 @@
                     <include>**/*.xml</include>
                 </includes>
             </resource>
+
+            <resource>
+                <directory>${basedir}/src/main/docker</directory>
+                <targetPath>${basedir}/target</targetPath>
+                <filtering>false</filtering>
+                <includes>
+                    <include>**/*</include>
+                </includes>
+            </resource>
+
         </resources>
         <plugins>
             <plugin>

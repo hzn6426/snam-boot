@@ -26,7 +26,7 @@ spring:
 #  zipkin:
 #    base-url: http://192.168.1.252:9411
   application:
-    name: snapper-authority
+    name: snam-authority
     lifecycle:
       timeout-per-shutdown-phase: 10s
   sleuth:
@@ -48,6 +48,7 @@ spring:
            enabled: true
   redis:
     #single mode
+    username: ${redis.username}
     host: ${redis.host}
     port: ${redis.port}
     password: ${redis.password}

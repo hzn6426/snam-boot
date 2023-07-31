@@ -12,6 +12,12 @@ logging:
   #config: classpath:logback-spring.xml
   level:
     console: ${snapper.log.level}
+jasypt:
+  encryptor:
+    bean: customerStringEncryptor
+    property:
+      prefix: "BENC("
+      suffix: ")"
 spring:
 #  config:
 #    import: "optional:configserver:"
@@ -21,7 +27,7 @@ spring:
   profiles:
     active: ${server.env}
   application:
-    name: snapper-gateway
+    name: snam-gateway
     lifecycle:
       timeout-per-shutdown-phase: 10s
   sleuth:
@@ -103,6 +109,7 @@ spring:
 
   redis:
     #single mode
+    username: ${redis.username}
     host: ${redis.host}
     port: ${redis.port}
     password: ${redis.password}

@@ -35,6 +35,35 @@
     </properties>
 
     <build>
+        <finalName>${project.name}</finalName>
+        <!--配置资源文件过滤，如果有其他需要打包的资源，需要重载此配置节 -->
+        <directory>target</directory>
+        <outputDirectory>target/classes</outputDirectory>
+        <testOutputDirectory>target/test-classes</testOutputDirectory>
+        <sourceDirectory>src/main/java</sourceDirectory>
+        <testSourceDirectory>src/test/java</testSourceDirectory>
+        <resources>
+            <resource>
+                <directory>src/main/java</directory>
+                <filtering>false</filtering>
+                <excludes>
+                    <exclude>**/*.java</exclude>
+                </excludes>
+            </resource>
+            <resource>
+                <directory>${basedir}/src/main/resources</directory>
+                <filtering>true</filtering>
+                <includes>
+                    <include>**/*</include>
+                </includes>
+            </resource>
+        </resources>
+        <testResources>
+            <testResource>
+                <directory>src/test/resources</directory>
+                <filtering>false</filtering>
+            </testResource>
+        </testResources>
         <pluginManagement>
             <plugins>
                 <plugin>
@@ -290,6 +319,14 @@
             <id>pub</id>
             <properties>
                 <env>pub</env>
+            </properties>
+        </profile>
+
+        <!-- YUN环境 -->
+        <profile>
+            <id>yun</id>
+            <properties>
+                <env>yun</env>
             </properties>
         </profile>
     </profiles>

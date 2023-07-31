@@ -49,13 +49,22 @@
                     <include>**/*.xml</include>
                 </includes>
             </resource>
+
+            <resource>
+                <directory>${basedir}/src/main/docker</directory>
+                <targetPath>${basedir}/target</targetPath>
+                <filtering>false</filtering>
+                <includes>
+                    <include>**/*</include>
+                </includes>
+            </resource>
         </resources>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
-                    <mainClass>com.baomibing.snam.authority.AuthorityServerBootstrap</mainClass>
+                    <mainClass>com.baomibing.snam.business.BusinessServerBootstrap</mainClass>
                 </configuration>
             </plugin>
 

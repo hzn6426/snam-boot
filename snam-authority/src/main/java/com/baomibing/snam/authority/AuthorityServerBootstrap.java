@@ -5,7 +5,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.beans.factory.support.BeanDefinitionRegistry;
-import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
@@ -39,7 +38,7 @@ public class AuthorityServerBootstrap {
 				Environment env = context.getEnvironment();
 		long after = System.currentTimeMillis();
 		long use = (after - before) / 1000;
-        log.info("\n----------------------------------------------------------\n\t" +
+        log.warn("\n----------------------------------------------------------\n\t" +
         		"应用 '{}' 运行成功! 启动时间 {} 秒\n\t 访问连接:" + "http://{}:{}{}{}\n" +
                 "----------------------------------------------------------",
                 env.getProperty("spring.application.name"),

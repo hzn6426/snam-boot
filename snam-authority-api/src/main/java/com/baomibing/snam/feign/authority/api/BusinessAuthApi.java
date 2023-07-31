@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 ;
 
 
-@FeignClient(name = "snapper-gateway", path = "/feign/authority/userAuth", url = "${feign.client.url}")
+@FeignClient(name = "snam-gateway", path = "/feign/authority/userAuth", url = "${feign.client.url}")
 public interface BusinessAuthApi {
 
 	@GetMapping("getPermIdByUrlAndMethod")

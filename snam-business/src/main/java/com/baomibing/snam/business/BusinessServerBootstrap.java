@@ -45,7 +45,7 @@ public class BusinessServerBootstrap {
         Environment env = context.getEnvironment();
         long after = System.currentTimeMillis();
         long use = (after - before) / 1000;
-        log.info("\n----------------------------------------------------------\n\t" +
+        log.warn("\n----------------------------------------------------------\n\t" +
                         "应用 '{}' 运行成功! 启动时间 {} 秒\n\t 访问连接:" + "http://{}:{}{}{}\n" +
                         "----------------------------------------------------------",
                 env.getProperty("spring.application.name"),

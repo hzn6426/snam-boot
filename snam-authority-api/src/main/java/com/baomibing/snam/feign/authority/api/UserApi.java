@@ -15,7 +15,7 @@ import java.util.List;
  * @Author: zhenyang 2021/4/6 15:09
  * @version: 1.0.0
  */
-@FeignClient(name = "snapper-gateway", path = "/feign/authority/user", url = "${feign.client.url}")
+@FeignClient(name = "snam-gateway", path = "/feign/authority/user", url = "${feign.client.url}")
 public interface UserApi {
 
 	/**

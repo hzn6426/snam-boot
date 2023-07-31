@@ -63,6 +63,8 @@ public class WmsOrderServiceImpl extends MBaseServiceImpl<WmsOrderMapper, WmsOrd
         super.saveIt(order);
     }
 
+    @Action(value = "ORDER_UPDATE")
+    @ActionConnect(value = "updateById")
     @Override
     public void updateOrder(WmsOrderDto order) {
 //        String serviceCode = PermUtil.parseGroup(order.getServiceCode()), sellerCode = PermUtil.parseUser(order.getSellerCode());
@@ -74,6 +76,8 @@ public class WmsOrderServiceImpl extends MBaseServiceImpl<WmsOrderMapper, WmsOrd
         super.updateIt(order);
     }
 
+    @Action(value = "ORDER_DELETE")
+    @ActionConnect(value = "deleteBatchIds")
     @Override
     public void deleteOrders(Set<String> ids) {
         super.deletes(ids);

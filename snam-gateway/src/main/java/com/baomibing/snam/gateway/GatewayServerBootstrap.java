@@ -1,5 +1,6 @@
 package com.baomibing.snam.gateway;
 
+import com.ulisesbocchio.jasyptspringboot.annotation.EnableEncryptableProperties;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -13,6 +14,7 @@ import java.net.UnknownHostException;
 
 @SpringBootApplication
 @EnableDiscoveryClient
+@EnableEncryptableProperties
 @EnableFeignClients
 @Slf4j
 public class GatewayServerBootstrap {
@@ -24,7 +26,7 @@ public class GatewayServerBootstrap {
 		Environment env = context.getEnvironment();
 		long after = System.currentTimeMillis();
 		long use = (after - before) / 1000;
-		log.info("\n----------------------------------------------------------\n\t" +
+		log.warn("\n----------------------------------------------------------\n\t" +
 				"应用 '{}' 运行成功! 启动时间 {} 秒\n\t 访问连接:" + "http://{}:{}{}{}\n" +
                 "----------------------------------------------------------",
                 env.getProperty("spring.application.name"),

@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
  * @date Apr 25, 2021 10:23:21 AM
  * @version 1.0.0
  */
-@FeignClient(name = "snapper-gateway", path = "/feign/authority/userLog", url = "${feign.client.url}")
+@FeignClient(name = "snam-gateway", path = "/feign/authority/userLog", url = "${feign.client.url}")
 public interface UserLogApi {
 
 	/**
