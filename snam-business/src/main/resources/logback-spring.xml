@@ -5,35 +5,35 @@
 
     <springProfile name="test,docker,pub">
 
-        <logger name="com.baomibing" level="INFO" addtivity="true">
-            <appender-ref ref="ASYNC_ROOT_APPENDER"/>
-        </logger>
-
-        <logger name="com.baomibing.tool" level="INFO" addtivity="false">
+        <logger name="com.baomibing.tool.log.PointLog" level="debug" addtivity="false">
             <appender-ref ref="ASYNC_POINT_APPENDER"/>
         </logger>
 
+        <logger name="com.baomibing.tool.log.SQLLog" level="debug" addtivity="false">
+            <appender-ref ref="ASYNC_SQL_APPENDER"/>
+        </logger>
+
+
         <root level="${logging.level.console}">
-            <appender-ref ref="CONSOLE_APPENDER"/>
+            <appender-ref ref="ASYNC_CONSOLE_APPENDER"/>
+            <appender-ref ref="ASYNC_ROOT_APPENDER"/>
         </root>
     </springProfile>
 
     <springProfile name="dev">
-<!--        <logger name="com.baomibing.authority" level="ERROR" addtivity="false">-->
-<!--            <appender-ref ref="ASYNC_EXCEPTION_APPENDER"/>-->
-<!--        </logger>-->
 
-        <logger name="com.baomibing.tool.log" level="INFO" addtivity="false">
+        <logger name="com.baomibing.tool.log.PointLog" level="debug" addtivity="false">
             <appender-ref ref="ASYNC_POINT_APPENDER"/>
         </logger>
 
-        <logger name="com.baomibing" level="INFO" addtivity="true">
-            <appender-ref ref="ASYNC_ROOT_APPENDER"/>
+        <logger name="com.baomibing.tool.log.SQLLog" level="debug" addtivity="false">
+            <appender-ref ref="ASYNC_SQL_APPENDER"/>
         </logger>
 
+
         <root level="${logging.level.console}">
-            <appender-ref ref="CONSOLE_APPENDER"/>
-<!--            <appender-ref ref="ASYNC_ROOT_APPENDER"/>-->
+            <appender-ref ref="ASYNC_CONSOLE_APPENDER"/>
+            <appender-ref ref="ASYNC_ROOT_APPENDER"/>
         </root>
 
     </springProfile>
