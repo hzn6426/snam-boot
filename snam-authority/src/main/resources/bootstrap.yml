@@ -168,6 +168,8 @@ mybatis-plus:
 snapper:
   ulog: false
   schema: ${jdbc.schema}
+  wrap:
+    package: ${snapper.wrap.package}
   action:
     package: ${snapper.action.package}
 

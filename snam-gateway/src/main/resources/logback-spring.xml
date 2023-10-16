@@ -4,30 +4,38 @@
     <include resource="com/baomibing/log/logback-base.xml"/>
 
     <springProfile name="test,docker,pub">
-        <root level="${logging.level.console}">
-            <appender-ref ref="ASYNC_CONSOLE_APPENDER"/>
-        </root>
 
-        <logger name="com.baomibing.root" level="info" addtivity="false">
+        <logger name="com.baomibing" level="INFO" addtivity="true">
             <appender-ref ref="ASYNC_ROOT_APPENDER"/>
         </logger>
 
-        <logger name="com.baomibing.exception" level="error" addtivity="false">
-            <appender-ref ref="ASYNC_EXCEPTION_APPENDER"/>
-        </logger>
-
-        <logger name="com.baomibing.pint" level="info" addtivity="false">
+        <logger name="com.baomibing.tool" level="INFO" addtivity="false">
             <appender-ref ref="ASYNC_POINT_APPENDER"/>
         </logger>
+
+        <root level="${logging.level.console}">
+            <appender-ref ref="CONSOLE_APPENDER"/>
+        </root>
     </springProfile>
 
     <springProfile name="dev">
-        <root level="${logging.level.console}">
-            <appender-ref ref="ASYNC_CONSOLE_APPENDER"/>
-            <appender-ref ref="ASYNC_ROOT_APPENDER"/>
-            <appender-ref ref="ASYNC_EXCEPTION_APPENDER"/>
+        <!--        <logger name="com.baomibing.authority" level="ERROR" addtivity="false">-->
+        <!--            <appender-ref ref="ASYNC_EXCEPTION_APPENDER"/>-->
+        <!--        </logger>-->
+
+        <logger name="com.baomibing.tool.log" level="INFO" addtivity="false">
             <appender-ref ref="ASYNC_POINT_APPENDER"/>
+        </logger>
+
+        <logger name="com.baomibing" level="INFO" addtivity="true">
+            <appender-ref ref="ASYNC_ROOT_APPENDER"/>
+        </logger>
+
+        <root level="${logging.level.console}">
+            <appender-ref ref="CONSOLE_APPENDER"/>
+            <!--            <appender-ref ref="ASYNC_ROOT_APPENDER"/>-->
         </root>
+
     </springProfile>
 
 </configuration>
