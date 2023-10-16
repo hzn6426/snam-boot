@@ -28,8 +28,7 @@
         <maven.staging.plugin>1.6.7</maven.staging.plugin>
         <maven.gpg.pluign>1.5</maven.gpg.pluign>
 
-
-        <snapper-cloud.version>0.0.3-SNAPSHOT</snapper-cloud.version>
+        <snapper-cloud.version>3.0.8</snapper-cloud.version>
         <spring.boot.version>2.6.14</spring.boot.version>
         <spring.cloud.version>2021.0.4</spring.cloud.version>
     </properties>
@@ -148,8 +147,6 @@
                     <artifactId>maven-release-plugin</artifactId>
                     <version>${maven-release-plugin.version}</version>
                     <configuration>
-                        <!-- <tagBase>https://github.com/hzn6426/search-mybatis-plus</tagBase>
-                            <tagNameFormat>search-mybatis-plus-tag-${version}</tagNameFormat> -->
                         <autoVersionSubmodules>true</autoVersionSubmodules>
                     </configuration>
                 </plugin>

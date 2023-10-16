@@ -1,6 +1,6 @@
 <div style="text-align: center;"><img src="auth.svg" width="200" height="180"/></div>
 <div style="text-align: center;"><h2>Snapper</h2></div>
-<div style="text-align: center;"><b>基于Snapper-Cloud的权限管理系统，只做权限，让权限更简单，让数据更安全</b></div>
+<div style="text-align: center;"><b>基于Snapper-Cloud的权限管理系统，专注权限，让权限更简单，让数据更安全</b></div>
 <hr/>
 <h2>概要</h2>
 <p>不依赖于业务，方便集成，开箱即用，简单几步配置即可集成到系统，注解式配置 + 运行时增强 + 界面化配置多种方式，用户 + 用户组 + 职位多种维度，授权码 + 时间段 + 委托 多种模式解决授权难题
@@ -24,21 +24,27 @@
 <hr/>
 <h2>该项包含的子项目</h2> 
 <ul>
-    <li>snam-boot 基于Spring-boot，是权限功能的后台服务端，为集成权限的后台示例</li>
-    <li>snapper-cloud 是权限功能的依赖库</li>
-    <li>snam 基于React、Antd，是权限功能的UI端，开箱即用</li>
-    <li>snbm 基于React、Antd，是权限功能业务UI示例</li>
+    <li><a href="https://gitee.com/ifrog/snam-boot">snam-boot 基于Spring-boot，是权限功能的后台服务端，为集成权限的后台示例</a></li>
+    <li>snapper-cloud 是权限功能的依赖库(企业版依赖库)</li>
+    <li><a href="https://gitee.com/ifrog/snam">snam 基于React、Antd，是权限功能的UI端，开箱即用</a></li>
+    <li><a href="https://gitee.com/ifrog/snbm">snbm 基于React、Antd，是权限功能业务UI示例</a></li>
 </ul>
 <h2>相关链接</h2>
 <ul>
-    <li><a>项目使用介绍</a></li>
-    <li><a>权限配置环境演示（设置后在业务演示环境查看效果）</a></li>
-    <li><a>业务环境演示</a></li>
+    <li><a href="https://baomibing.com">官网</a></li>
+    <li><a href="https://baomibing.com/pages/the-quick-start/">项目使用介绍</a></li>
+    <li><a href="https://admin.baomibing.com/user/login">权限配置环境演示（设置后在业务演示环境查看效果）</a></li>
+    <li><a href="https://business.baomibing.com/user/login">业务环境演示</a></li>
 </ul>
-
-<b>注意：该项目为权限管理企业版，具体请参考<a>企业版介绍</a>，开源版请访问
-<a>coral-权限管理</a></b>
-
+<hr/>
+<h2>演示账号</h2>
+<b>管理员账号分属不同分公司的区别为：创建的数据所属组织为创建人对应的组织！</b>
+<ul>
+    <li>snapper/123456 - 管理员账号（组织属于青岛分公司）- 能看到所有数据</li>
+    <li>ximen/123456 - 管理员账号（组织属于上海分公司）- 能看到所有数据</li>
+    <li>用户列表中的其他账号（除frog），密码均为123456，方便进行权限数据的查看</li>
+    <li>锁定数据不允许修改，仅供登录参考，若需进一步验证可通过管理员账号进行数据创建</li>
+</ul>
 
 
 
