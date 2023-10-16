@@ -1,5 +1,5 @@
-<div style="text-align: center;"><img src="auth.svg" width="200" height="180"/></div>
-<div style="text-align: center;"><h2>Snapper</h2></div>
+<center><div style="text-align: center;"><img src="auth.svg" width="200" height="180"/></div></center>
+<center><div style="text-align: center;"><h2>Snapper</h2></div></center>
 <div style="text-align: center;"><b>基于Snapper-Cloud的权限管理系统，专注权限，让权限更简单，让数据更安全</b></div>
 <hr/>
 <h2>概要</h2>
@@ -38,13 +38,15 @@
 </ul>
 <hr/>
 <h2>演示账号</h2>
-<b>管理员账号分属不同分公司的区别为：创建的数据所属组织为创建人对应的组织！</b>
+
 <ul>
     <li>snapper/123456 - 管理员账号（组织属于青岛分公司）- 能看到所有数据</li>
     <li>ximen/123456 - 管理员账号（组织属于上海分公司）- 能看到所有数据</li>
     <li>用户列表中的其他账号（除frog），密码均为123456，方便进行权限数据的查看</li>
-    <li>锁定数据不允许修改，仅供登录参考，若需进一步验证可通过管理员账号进行数据创建</li>
+    <li>锁定数据不允许修改，仅供参考，若需进一步验证可通过管理员账号进行数据创建</li>
 </ul>
+
+<b>注意：管理员账号分属不同分公司，创建的数据所属组织为对应的组织！</b>
 
 
 

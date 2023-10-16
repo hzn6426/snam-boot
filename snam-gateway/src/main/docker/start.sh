@@ -1,4 +1,4 @@
-#dockerbin="/usr/local/bin/docker"
+#! /bin/bash
 dockerbin="/usr/bin/docker"
 echo "keep only latest two images, delete others..."
 docker images | grep snam/gateway | grep -v grep | awk '{print $3}'| tail -n +3 | xargs $dockerbin rmi -f
