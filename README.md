@@ -1,6 +1,6 @@
-<center><div style="text-align: center;"><img src="auth.svg" width="200" height="180"/></div></center>
-<center><div style="text-align: center;"><h2>Snapper</h2></div></center>
-<div style="text-align: center;"><b>基于Snapper-Cloud的权限管理系统，专注权限，让权限更简单，让数据更安全</b></div>
+<div align="center"><img src="auth.svg" width="200" height="180"/></div>
+<div align="center"><h2>Snapper</h2></div>
+<div align="center"><b>基于Snapper-Cloud的权限管理系统，专注权限，让权限更简单，让数据更安全</b></div>
 <hr/>
 <h2>概要</h2>
 <p>不依赖于业务，方便集成，开箱即用，简单几步配置即可集成到系统，注解式配置 + 运行时增强 + 界面化配置多种方式，用户 + 用户组 + 职位多种维度，授权码 + 时间段 + 委托 多种模式解决授权难题
