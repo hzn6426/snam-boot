@@ -33,7 +33,6 @@ import java.net.UnknownHostException;
 @EnableScheduling
 @EnableAsync
 @MapperScan("com.baomibing.snam.business.mapper")
-//"com.baomibing.web.**","com.baomibing.core.**","com.baomibing.orm.**",
 @ComponentScan({ "com.baomibing.snam.business.**", "com.baomibing.snam.feign.authority.**" })
 @Slf4j
 public class BusinessServerBootstrap {

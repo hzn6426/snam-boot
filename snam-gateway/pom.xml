@@ -16,7 +16,6 @@
             <filter>src/main/envs/env-${env}.properties</filter>
         </filters>
         <resources>
-            <!-- 将dirctory目录下的文件复制到targetPath下 -->
             <resource>
                 <targetPath>${project.build.directory}/classes</targetPath>
                 <directory>src/main/resources</directory>

@@ -1,5 +1,5 @@
 <div align="center"><img src="auth.svg" width="200" height="180"/></div>
-<div align="center"><h2>Snapper</h2></div>
+<div align="center"><h2>Snapper权限框架系统</h2></div>
 <div align="center"><b>基于Snapper-Cloud的权限管理系统，专注权限，让权限更简单，让数据更安全</b></div>
 <hr/>
 <h2>概要</h2>
