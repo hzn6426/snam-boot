@@ -15,14 +15,11 @@
         <filters>
             <filter>src/main/envs/env-${env}.properties</filter>
         </filters>
-        <!--配置资源文件过滤，如果有其他需要打包的资源，需要重载此配置节 -->
         <directory>target</directory>
         <outputDirectory>target/classes</outputDirectory>
         <testOutputDirectory>target/test-classes</testOutputDirectory>
         <sourceDirectory>src/main/java</sourceDirectory>
-        <!--        <testSourceDirectory>src/main/test</testSourceDirectory>-->
         <resources>
-            <!-- 将dirctory目录下的文件复制到targetPath下 -->
             <resource>
                 <targetPath>${project.build.directory}/classes</targetPath>
                 <directory>src/main/resources</directory>
@@ -33,15 +30,7 @@
                     <include>*.properties</include>
                 </includes>
             </resource>
-            <resource>
-                <targetPath>${project.build.directory}/classes</targetPath>
-                <directory>src/main/resources</directory>
-                <filtering>false</filtering>
-                <includes>
-                    <include>META-INF/services/**</include>
-                </includes>
-            </resource>
-            <!-- mapp/xml中的mybatis xml 同样打到jar中 -->
+
             <resource>
                 <directory>src/main/java</directory>
                 <filtering>false</filtering>
@@ -93,11 +82,6 @@
             <artifactId>snapper-feign-starter</artifactId>
         </dependency>
 
-<!--        <dependency>-->
-<!--            <groupId>com.baomibing</groupId>-->
-<!--            <artifactId>snapper-log-starter</artifactId>-->
-<!--        </dependency>-->
-
         <dependency>
             <groupId>com.baomibing</groupId>
             <artifactId>snapper-http</artifactId>
@@ -108,30 +92,12 @@
             <artifactId>snapper-oss-starter</artifactId>
         </dependency>
 
-<!--        <dependency>-->
-<!--            <groupId>org.springframework.cloud</groupId>-->
-<!--            <artifactId>spring-cloud-starter-bootstrap</artifactId>-->
-<!--        </dependency>-->
-
-<!--        <dependency>-->
-<!--            <groupId>org.springframework.cloud</groupId>-->
-<!--            <artifactId>spring-cloud-starter-sleuth</artifactId>-->
-<!--        </dependency>-->
-
-
-        <!--热加载-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
             <scope>runtime</scope>
             <optional>true</optional>
         </dependency>
-
-<!--        <dependency>-->
-<!--            <groupId>com.github.ulisesbocchio</groupId>-->
-<!--            <artifactId>jasypt-spring-boot</artifactId>-->
-<!--        </dependency>-->
-
 
         <dependency>
             <groupId>com.baomibing</groupId>
