@@ -49,8 +49,8 @@
 </ul>
 
 <b>注意：管理员账号分属不同分公司，创建的数据所属组织为对应的组织！</b>
-
-<h2>界面不分截图</h2>
+<hr/>
+<h2>界面部分截图</h2>
 
 ![user.png](images/user.png)
 ![org.png](images/org.png)
