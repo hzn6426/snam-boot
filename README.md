@@ -5,6 +5,7 @@
 <hr/>
 <h2>概要</h2>
 <p>不依赖于业务，方便集成，开箱即用，简单几步配置即可集成到系统，注解式配置 + 运行时增强 + 界面化配置多种方式，用户 + 用户组 + 职位多种维度，授权码 + 时间段 + 委托 多种模式解决授权难题
+<p>本项目已将权限功能封装为单独的系统，拥有独立界面，与业务系统隔离，通过界面配置即可实时实现资源权限、业务数据权限、功能数据权限、列数据权限的功能</p>
 <hr/>
 <h2>核心功能：</h2>
 <ul>
@@ -49,6 +50,14 @@
 
 <b>注意：管理员账号分属不同分公司，创建的数据所属组织为对应的组织！</b>
 
+<h2>界面不分截图</h2>
 
-
-
+![user.png](user.png)
+![org.png](org.png)
+![position.png](position.png)
+![post_auth.png](post_auth.png)
+![menu.png](menu.png)
+![resource_auth.png](resource_auth.png)
+![Authority.png](Authority.png)
+![dictionary.png](dictionary.png)
+![column.png](column.png)
