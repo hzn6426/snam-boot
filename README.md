@@ -52,12 +52,12 @@
 
 <h2>界面不分截图</h2>
 
-![user.png](user.png)
-![org.png](org.png)
-![position.png](position.png)
-![post_auth.png](post_auth.png)
-![menu.png](menu.png)
-![resource_auth.png](resource_auth.png)
-![Authority.png](Authority.png)
-![dictionary.png](dictionary.png)
-![column.png](column.png)
+![user.png](images/user.png)
+![org.png](images/org.png)
+![position.png](images/position.png)
+![post_auth.png](images/post_auth.png)
+![Authority.png](images/Authority.png)
+![menu.png](images/menu.png)
+![resource_auth.png](images/resource_auth.png)
+![dictionary.png](images/dictionary.png)
+![column.png](images/column.png)
