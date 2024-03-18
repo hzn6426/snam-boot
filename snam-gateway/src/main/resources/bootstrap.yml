@@ -121,7 +121,8 @@ spring:
         max-active: 100
         max-wait: 1000
 
-
+snapper:
+  cache-key: ${snapper.cache.prefix}
 #management:
 #  endpoints:
 #    web:

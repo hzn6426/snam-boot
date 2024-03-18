@@ -213,7 +213,7 @@
 
             <dependency>
                 <groupId>com.baomibing</groupId>
-                <artifactId>snapper-authority-starter</artifactId>
+                <artifactId>snapper-authority-security-micro</artifactId>
                 <version>${snapper-cloud.version}</version>
             </dependency>
 
