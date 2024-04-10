@@ -28,7 +28,7 @@
         <maven.staging.plugin>1.6.7</maven.staging.plugin>
         <maven.gpg.pluign>1.5</maven.gpg.pluign>
 
-        <snapper-cloud.version>3.0.9</snapper-cloud.version>
+        <snapper-cloud.version>3.1.0</snapper-cloud.version>
         <spring.boot.version>2.6.14</spring.boot.version>
         <spring.cloud.version>2021.0.4</spring.cloud.version>
     </properties>
@@ -159,6 +159,12 @@
 
             <dependency>
                 <groupId>com.baomibing</groupId>
+                <artifactId>snapper-business-starter</artifactId>
+                <version>${snapper-cloud.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.baomibing</groupId>
                 <artifactId>snapper-tool</artifactId>
                 <version>${snapper-cloud.version}</version>
             </dependency>
@@ -213,7 +219,7 @@
 
             <dependency>
                 <groupId>com.baomibing</groupId>
-                <artifactId>snapper-authority-starter</artifactId>
+                <artifactId>snapper-authority-security-micro</artifactId>
                 <version>${snapper-cloud.version}</version>
             </dependency>
 

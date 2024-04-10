@@ -166,6 +166,7 @@ mybatis-plus:
     #配置JdbcTypeForNull, oracle数据库必须配置
     jdbc-type-for-null: 'null'
 snapper:
+  cache-key: ${snapper.cache.prefix}
   ulog: false
   schema: ${jdbc.schema}
   wrap:

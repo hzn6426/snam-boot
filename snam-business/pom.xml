@@ -64,32 +64,7 @@
 
         <dependency>
             <groupId>com.baomibing</groupId>
-            <artifactId>snapper-web-starter</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>com.baomibing</groupId>
-            <artifactId>snapper-orm-starter</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>com.baomibing</groupId>
-            <artifactId>snapper-email</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>com.baomibing</groupId>
-            <artifactId>snapper-feign-starter</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>com.baomibing</groupId>
-            <artifactId>snapper-http</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>com.baomibing</groupId>
-            <artifactId>snapper-oss-starter</artifactId>
+            <artifactId>snapper-business-starter</artifactId>
         </dependency>
 
         <dependency>
