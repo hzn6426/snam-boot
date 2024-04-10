@@ -159,6 +159,12 @@
 
             <dependency>
                 <groupId>com.baomibing</groupId>
+                <artifactId>snapper-business-starter</artifactId>
+                <version>${snapper-cloud.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.baomibing</groupId>
                 <artifactId>snapper-tool</artifactId>
                 <version>${snapper-cloud.version}</version>
             </dependency>
