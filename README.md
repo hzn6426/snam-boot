@@ -33,6 +33,7 @@
 </ul>
 <h2>相关链接</h2>
 <ul>
+    <li><a href="https://gitee.com/ifrog/snam-standalone">Snapper权限单机版，内存数据库、内存缓存，无需额外依赖即可运行</a></li>
     <li><a href="https://baomibing.com">官网</a></li>
     <li><a href="https://baomibing.com/pages/the-quick-start/">项目使用介绍</a></li>
     <li><a href="https://admin.baomibing.com/user/login">权限配置环境演示（设置后在业务演示环境查看效果）</a></li>
