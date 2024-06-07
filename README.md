@@ -24,6 +24,8 @@
     <li>接入日志 管理第三方接入系统的日志，包含请求IP、来源系统、浏览器、请求信息、错误信息等</li>
 </ul>
 <hr/>
+<h2>单机版</h2>
+<p><a href="https://gitee.com/ifrog/snam-standalone">Snapper权限单机版，内存数据库、内存缓存，无需额外依赖即可运行</a></p>
 <h2>该项包含的子项目</h2> 
 <ul>
     <li><a href="https://gitee.com/ifrog/snam-boot">snam-boot 基于Spring-boot，是权限功能的后台服务端，为集成权限的后台示例</a></li>
