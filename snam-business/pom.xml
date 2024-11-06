@@ -63,15 +63,35 @@
     <dependencies>
 
         <dependency>
-            <groupId>com.baomibing</groupId>
-            <artifactId>snapper-business-starter</artifactId>
-        </dependency>
-
-        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
             <scope>runtime</scope>
             <optional>true</optional>
+        </dependency>
+
+        <dependency>
+            <groupId>com.baomibing</groupId>
+            <artifactId>snapper-web-starter</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.baomibing</groupId>
+            <artifactId>snapper-orm-plus-starter</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.baomibing</groupId>
+            <artifactId>snapper-email</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.baomibing</groupId>
+            <artifactId>snapper-feign-starter</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.baomibing</groupId>
+            <artifactId>snapper-http</artifactId>
         </dependency>
 
         <dependency>

@@ -8,7 +8,6 @@ import com.baomibing.snam.feign.authority.api.BusinessAuthApi;
 import com.baomibing.snam.feign.authority.dto.UserWrapDto;
 import com.baomibing.tool.user.User;
 import com.google.auto.service.AutoService;
-import org.springframework.stereotype.Component;
 
 /**
  *  com.baomibing.snam.business.spi.DefaultSpiBusinessAuthService
@@ -18,8 +17,6 @@ import org.springframework.stereotype.Component;
  **/
  @AutoService(value = BusinessAuthService.class)
 public class DefaultSpiBusinessAuthService implements BusinessAuthService {
-
-//    @Autowired private BusinessAuthApi businessAuthApi;
 
     private  BusinessAuthApi getBusinessAuthApi() {
         return ApplicationContextHandler.getBean(BusinessAuthApi.class);

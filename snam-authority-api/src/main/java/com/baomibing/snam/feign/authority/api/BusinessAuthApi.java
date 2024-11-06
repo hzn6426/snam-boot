@@ -7,7 +7,6 @@ import org.springframework.cloud.openfeign.SpringQueryMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-;
 
 
 @FeignClient(name = "snam-gateway", path = "/feign/authority/userAuth", url = "${feign.client.url}")

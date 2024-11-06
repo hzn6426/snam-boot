@@ -80,6 +80,12 @@ spring:
           - Path=/authority/wapi/**
           filters:
           - RewritePath=/authority/(wapi/)?(?<path>.*), /wapi/$\{path}
+        - id: snam-tenant
+          uri: ${route.authority}
+          predicates:
+            - Path=/authority/eapi/**
+          filters:
+            - RewritePath=/authority/(eapi/)?(?<path>.*), /eapi/$\{path}
         # for feign
         - id: snam-auth-feign
           uri: ${route.authority}
