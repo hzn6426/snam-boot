@@ -29,6 +29,6 @@ then
 echo "remove exist name container..."
 $dockerbin ps --all|grep snam-business"${md}"  | grep -v grep | awk '{print $1}' | xargs $dockerbin rm -f
 fi;
-$dockerbin run -di --restart=always --network=host  -v /usr/local/snam/business/logs:/logs/snam-business --name snam-business"${md}" -p 8092:8092 snam/business:v"${md}"
+$dockerbin run -di --restart=always --network=host --memory=2g --memory-swap=2g  -v /usr/local/snam/business/logs:/logs/snam-business --name snam-business"${md}" -p 8092:8092 snam/business:v"${md}"
 # shellcheck disable=SC2086
 $dockerbin logs -f snam-business${md} &> business${md}.log &
