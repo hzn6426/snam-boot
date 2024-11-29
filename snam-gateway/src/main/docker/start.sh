@@ -30,5 +30,5 @@ then
 echo "remove exist name container..."
 $dockerbin ps --all|grep snam-gateway"${md}"  | grep -v grep | awk '{print $1}' | xargs $dockerbin rm -f
 fi;
-$dockerbin run -di --restart=always --network=host  -v /usr/local/snam/gateway/logs:/logs/snam-gateway --name snam-gateway"${md}" -p 8090:8090 snam/gateway:v"${md}"
+$dockerbin run -di --restart=always --network=host --network=host --memory=1g --memory-swap=1g -v /usr/local/snam/gateway/logs:/logs/snam-gateway --name snam-gateway"${md}" -p 8090:8090 snam/gateway:v"${md}"
 $dockerbin logs -f snam-gateway"${md}" &> gateway"${md}".log &
