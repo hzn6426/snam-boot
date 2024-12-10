@@ -22,16 +22,21 @@
     <li>业务日志 管理系统中的日志，包含操作人、操作模块、请求信息、异常信息、浏览器信息等</li>
     <li>接入用户 管理第三方接入系统的用户，设置IP段、生效时间段、分配APPID、APPKEY等</li>
     <li>接入日志 管理第三方接入系统的日志，包含请求IP、来源系统、浏览器、请求信息、错误信息等</li>
+    <li>限流管理 配置某些规则进行系统流量限制</li>
+    <li>租户管理 管理系统中的租户，租户与租户之间进行数据隔离，每个租户可以配置自己的用户、角色、权限等信息</li>
+    <li>租户菜单 管理租户允许使用的菜单及按钮</li>
+    <li>租户日志 查看租户操作的业务日志</li>
+    <li>租户接口 对租户开通相关接口，可用于计费等信息</li>
 </ul>
 <hr/>
 <h2>单机版</h2>
-<p><a href="https://gitee.com/ifrog/snam-standalone">Snapper权限单机版，内存数据库、内存缓存，无需额外依赖即可运行</a></p>
+<p><a href="https://gitee.com/ifrog/snam-standalone">Snapper权限单机版，简单配置即可使用</a></p>
 <h2>该项包含的子项目</h2> 
 <ul>
-    <li><a href="https://gitee.com/ifrog/snam-boot">snam-boot 基于Spring-boot，是权限功能的后台服务端，为集成权限的后台示例</a></li>
+    <li><a href="https://gitee.com/ifrog/snam-boot">snam-boot（微服务版） 基于Spring-boot，是权限功能的后台服务端，为集成权限的后台示例</a></li>
     <li>snapper-cloud 是权限功能的依赖库(企业版依赖库)</li>
     <li><a href="https://gitee.com/ifrog/snam">snam 基于React、Antd，是权限功能的UI端，开箱即用</a></li>
-    <li><a href="https://gitee.com/ifrog/snbm">snbm 基于React、Antd，是权限功能业务UI示例</a></li>
+
 </ul>
 <h2>相关链接</h2>
 <ul>
@@ -44,8 +49,7 @@
 <h2>演示账号</h2>
 
 <ul>
-    <li>snapper/123456 - 管理员账号（组织属于青岛分公司）- 能看到所有数据</li>
-    <li>ximen/123456 - 管理员账号（组织属于上海分公司）- 能看到所有数据</li>
+    <li>ximen/123456 - 管理员账号（组织属于青岛分公司）- 能看到所有数据</li>
     <li>用户列表中的其他账号（除frog），密码均为123456，方便进行权限数据的查看</li>
     <li>锁定数据不允许修改，仅供参考，若需进一步验证可通过管理员账号进行数据创建</li>
 </ul>
