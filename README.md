@@ -29,6 +29,21 @@
     <li>租户接口 对租户开通相关接口，可用于计费等信息</li>
 </ul>
 <hr/>
+<h2>前端启动：</h2>
+修改config/proxy.js
+
+```javascript
+dev: {
+    '/authority/': {
+      target: 'http://127.0.0.1:8090/',
+      changeOrigin: true,
+      pathRewrite: {
+          '^': '',
+      }
+    }
+  }
+```
+<hr/>
 <h2>单机版</h2>
 <p><a href="https://gitee.com/ifrog/snam-standalone">Snapper权限单机版，简单配置即可使用</a></p>
 <h2>该项包含的子项目</h2> 
@@ -58,12 +73,12 @@
 <hr/>
 <h2>界面部分截图</h2>
 
+![changelog.png](images/changelog.png)
 ![user.png](images/user.png)
-![org.png](images/org.png)
-![position.png](images/position.png)
-![post_auth.png](images/post_auth.png)
-![Authority.png](images/Authority.png)
+![uset.png](images/uset.png)
+![group.png](images/group.png)
+![resource.png](images/resource.png)
+![dict.png](images/dict.png)
 ![menu.png](images/menu.png)
-![resource_auth.png](images/resource_auth.png)
-![dictionary.png](images/dictionary.png)
 ![column.png](images/column.png)
+![tenant.png](images/tenant.png)

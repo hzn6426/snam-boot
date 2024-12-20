@@ -76,7 +76,7 @@
 
         <dependency>
             <groupId>com.baomibing</groupId>
-            <artifactId>snapper-authority-security-micro</artifactId>
+            <artifactId>snapper-security-micro</artifactId>
         </dependency>
 
     </dependencies>
