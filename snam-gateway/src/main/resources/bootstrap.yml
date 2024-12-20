@@ -112,6 +112,18 @@ spring:
           - Path=/business/**
           filters:
           - RewritePath=/business/(api/)?(?<path>.*), /api/$\{path}
+            # for third part
+        - id: snam-business-third
+          uri: ${route.business}
+          predicates:
+            - name: ReadBody
+              args:
+                inClass: "#{T(String)}"
+                predicate: "#{@requestBodyPredicate}"
+            - Path=/order/tapi/**
+          filters:
+            - RewritePath=/business/(tapi/)?(?<path>.*), /tapi/$\{path}
+
 
   redis:
     #single mode
