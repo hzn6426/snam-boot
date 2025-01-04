@@ -54,10 +54,6 @@ public class MvcConfigurer implements WebMvcConfigurer {
 		return new ContextHandlerInterceptor();
 	}
 
-//	@Bean
-//	public TenantHandlerInterceptor tenantInterceptor() {
-//		return new TenantHandlerInterceptor();
-//	}
 
 	@Bean
 	public ReturnHandlerAdvice returnHandlerAdvice() {

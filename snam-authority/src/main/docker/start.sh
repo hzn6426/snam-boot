@@ -30,6 +30,6 @@ then
 echo "remove exist name container..."
 $dockerbin ps --all|grep snam-authority"${md}"  | grep -v grep | awk '{print $1}' | xargs $dockerbin rm -f
 fi;
-$dockerbin run -di --restart=always --network=host --memory=4g --memory-swap=4g -v /usr/local/snam/authority/logs:/logs/snam-authority --name snam-authority"${md}" -p 8091:8091 snam/authority:v"${md}"
+$dockerbin run -di --restart=always  --network=host --memory=4g --memory-swap=4g -v /usr/local/snam/authority/logs:/logs/snam-authority --name snam-authority"${md}" -p 8091:8091 snam/authority:v"${md}"
 # shellcheck disable=SC2086
 $dockerbin logs -f snam-authority${md} &> authority${md}.log &
