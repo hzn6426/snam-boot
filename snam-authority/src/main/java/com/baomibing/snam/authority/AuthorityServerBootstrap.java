@@ -20,7 +20,7 @@ import java.net.UnknownHostException;
 @EnableEncryptableProperties
 @EnableMBeanExport(registration = RegistrationPolicy.IGNORE_EXISTING)
 @MapperScan("com.baomibing.authority.mapper")
-@ComponentScan({ "com.baomibing.authority.**"})
+@ComponentScan({ "com.baomibing.authority.**","com.baomibing.snam.authority.**"})
 @Slf4j
 public class AuthorityServerBootstrap {
 

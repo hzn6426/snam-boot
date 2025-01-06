@@ -1,4 +1,4 @@
-FROM docker.rainbond.cc/fabric8/java-alpine-openjdk8-jdk
+FROM docker.rainbond.cc/fabric8/java-alpine-openjdk8-jdk:1.9.0
 WORKDIR /deployments
 COPY snam-business.jar /deployments/
 ENV AB_OFF true
