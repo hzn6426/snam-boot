@@ -116,12 +116,11 @@ spring:
         - id: snam-business-third
           uri: ${route.business}
           predicates:
-            - name: ReadBody
-              args:
-                inClass: "#{T(String)}"
-                predicate: "#{@requestBodyPredicate}"
             - Path=/order/tapi/**
           filters:
+            - name: CacheRequestBody
+              args:
+                bodyClass: java.lang.String
             - RewritePath=/business/(tapi/)?(?<path>.*), /tapi/$\{path}
 
 

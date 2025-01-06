@@ -161,46 +161,16 @@
 
             <dependency>
                 <groupId>com.baomibing</groupId>
-                <artifactId>snapper-email</artifactId>
-                <version>${snapper-cloud.version}</version>
-            </dependency>
-
-
-            <dependency>
-                <groupId>com.baomibing</groupId>
-                <artifactId>snapper-web-starter</artifactId>
-                <version>${snapper-cloud.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>com.baomibing</groupId>
-                <artifactId>snapper-orm-starter</artifactId>
-                <version>${snapper-cloud.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>com.baomibing</groupId>
                 <artifactId>snapper-security-micro</artifactId>
                 <version>${snapper-cloud.version}</version>
             </dependency>
 
             <dependency>
                 <groupId>com.baomibing</groupId>
-                <artifactId>snapper-cache-starter</artifactId>
+                <artifactId>snapper-business-starter</artifactId>
                 <version>${snapper-cloud.version}</version>
             </dependency>
 
-            <dependency>
-                <groupId>com.baomibing</groupId>
-                <artifactId>snapper-log-starter</artifactId>
-                <version>${snapper-cloud.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>com.baomibing</groupId>
-                <artifactId>snapper-feign-starter</artifactId>
-                <version>${snapper-cloud.version}</version>
-            </dependency>
 
             <dependency>
                 <groupId>com.baomibing</groupId>
@@ -221,11 +191,6 @@
                 <version>${snapper-cloud.version}</version>
             </dependency>
 
-            <dependency>
-                <groupId>com.baomibing</groupId>
-                <artifactId>snapper-http</artifactId>
-                <version>${snapper-cloud.version}</version>
-            </dependency>
 
             <dependency>
                 <groupId>org.springframework.boot</groupId>

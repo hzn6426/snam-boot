@@ -9,13 +9,15 @@ package com.baomibing.snam.authority.config;
 import com.baomibing.web.common.ReturnHandlerAdvice;
 import com.baomibing.web.convert.*;
 import com.baomibing.web.exception.GlobalExceptionHandler;
+import com.baomibing.web.filter.MultiRequestWrapFilter;
 import com.baomibing.web.interceptor.ContextHandlerInterceptor;
 import com.baomibing.web.undertow.UndertowServerFactoryCustomizer;
+import com.baomibing.web.xss.XssFilter;
 import com.google.common.collect.Lists;
 import io.undertow.Undertow;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
+import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -31,8 +33,7 @@ import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 
-import java.util.List;
-import java.util.Locale;
+import java.util.*;
 
 /**
  * WebMvc 通用配置类
@@ -40,7 +41,7 @@ import java.util.Locale;
  * @author zening
  * @since 1.0.0
  */
-@ConditionalOnProperty(prefix = "spring.mvc", name = "enabled", havingValue = "true", matchIfMissing = true)
+//@ConditionalOnProperty(prefix = "spring.mvc", name = "enabled", havingValue = "true", matchIfMissing = true)
 @Configuration
 public class MvcConfigurer implements WebMvcConfigurer {
 
@@ -48,6 +49,7 @@ public class MvcConfigurer implements WebMvcConfigurer {
 	private MappingJackson2HttpMessageConverter jacksonMessageConverter;
 	@Autowired
 	private StringHttpMessageConverter stringMessageConvert;
+
 
 	@Bean
 	public ContextHandlerInterceptor contextInterceptor() {
@@ -127,6 +129,41 @@ public class MvcConfigurer implements WebMvcConfigurer {
 	@ConditionalOnClass(Undertow.class)
 	public UndertowServerFactoryCustomizer getUndertowServerFactoryCustomizer() {
 		return new UndertowServerFactoryCustomizer();
+	}
+
+	@Bean
+	public FilterRegistrationBean<MultiRequestWrapFilter> multiRequestFilter() {
+		FilterRegistrationBean<MultiRequestWrapFilter> filterRegistration = new FilterRegistrationBean<>(new MultiRequestWrapFilter());
+		filterRegistration.addUrlPatterns("/*");
+		filterRegistration.setOrder(-1);
+		return filterRegistration;
+	}
+
+	@Bean
+	public FilterRegistrationBean<XssFilter> xssFilter() {
+		FilterRegistrationBean<XssFilter> filterRegistration = new FilterRegistrationBean<>(new XssFilter());
+		filterRegistration.addUrlPatterns("/*");
+		String ignorePaths = new StringJoiner(",")
+				.add("/favicon.ico")
+				.add("/doc.html")
+				.add("/swagger-ui.html")
+				.add("/csrf")
+				.add("/webjars/*")
+				.add("/v2/*")
+				.add("/swagger-resources/*")
+				.add("/resources/*")
+				.add("/static/*")
+				.add("/public/*")
+				.add("/classpath:*")
+				.add("/actuator/*")
+				.add("/**/noxss/**")
+				.add("/druid/*")
+				.toString();
+		Map<String, String> initParameters = new HashMap<>(1);
+		initParameters.put("exclusions", ignorePaths);
+		filterRegistration.setInitParameters(initParameters);
+		filterRegistration.setOrder(-2);
+		return filterRegistration;
 	}
 
 }
